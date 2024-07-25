@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body, html
+{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000;
+}
+.cards-container
+{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.cards-container .card
+{
+    transition: opacity 0.3s ease;
+}
+.cards-container .card:not(.active){
+    animation: flutuar 2s ease-in-out infinite alternate;
+    opacity: 0.3;
+}
+.cards-container .card.active{
+    opacity: 1;
+}
+
+.card.active
+{
+    width: 350px;
+    height: 450px; 
+    transition: transform 0.2s ease-out, width 0.5s ease-in-out;
+}
+.card
+{
+    width: 300px;
+    height: 400px;
+    position: relative;
+
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out, width 0.5s ease-in-out ;
+  
+}
+
+.card .image-container
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.card img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.2s ease-out;
+}
+.card:hover img
+{
+    transform: scale(1.05);
+}
+
+.card .info
+{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 20px;
+    background-color: #ffffffef;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backface-visibility: hidden;
+    transform: translateZ(30px);
+    transition: transform 0.2s ease-in-out;
+}
+
+.info h2
+{
+    font-size: 15px;
+    font-family: "Press Start 2P", system-ui;
+}
+
+.info p
+{
+    font-size: 8px;
+    font-family: "Press Start 2P", system-ui;
+} 
+
+.card:hover .info
+{
+    transform: translateZ(50px);
+}
+
+
+
+@keyframes flutuar{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 50px;
+    }
+}
